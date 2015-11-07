@@ -2,30 +2,24 @@
 
 <h1>Listing Students</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Age</th>
-      <th>Major</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="row">
     <% @students.each do |student| %>
-      <tr>
-        <td><%= student.name %></td>
-        <td><%= student.age %></td>
-        <td><%= student.major %></td>
-        <td><%= link_to 'Show', student %></td>
-        <td><%= link_to 'Edit', edit_student_path(student) %></td>
-        <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <div class="col-md-3">
+       <div class="panel panel-default">
+        <div class="panel-body">
+         <h2><%= student.name %></h2>
+         <h3><%= student.age %></h3>
+         <p><%= student.major %></p>
+       
+         <div class="btn-group">
+          <%= link_to 'Show', student, class: "btn btn-default" %>
+          <%= link_to 'Edit', edit_student_path(student), class: "btn btn-default" %>
+          <%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+         </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 
-<br>
-
-<%= link_to 'New Student', new_student_path %>
+<%= link_to 'New Student', new_student_path, class: "btn btn-info" %>

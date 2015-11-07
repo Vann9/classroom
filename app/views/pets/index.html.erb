@@ -2,30 +2,24 @@
 
 <h1>Listing Pets</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Breed</th>
-      <th>Age</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+ <div class="row">
     <% @pets.each do |pet| %>
-      <tr>
-        <td><%= pet.name %></td>
-        <td><%= pet.breed %></td>
-        <td><%= pet.age %></td>
-        <td><%= link_to 'Show', pet %></td>
-        <td><%= link_to 'Edit', edit_pet_path(pet) %></td>
-        <td><%= link_to 'Destroy', pet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <div class="col-md-3">
+       <div class="panel panel-default">
+        <div class="panel-body">
+         <h2><%= pet.name %></h2>
+         <h3><%= pet.breed %></h3>
+         <p><%= pet.age %></p>
+       
+         <div class="btn-group">
+          <%= link_to 'Show', pet, class: "btn btn-default" %>
+          <%= link_to 'Edit', edit_pet_path(pet), class: "btn btn-default" %>
+          <%= link_to 'Destroy', pet, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+         </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 
-<br>
-
-<%= link_to 'New Pet', new_pet_path %>
+<%= link_to 'New Pet', new_pet_path, class: "btn btn-info" %>
